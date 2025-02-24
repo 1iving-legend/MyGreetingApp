@@ -5,6 +5,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.*;
 import springboot.MyGreetingApp.DTO.Message;
+import springboot.MyGreetingApp.DTO.User;
 import springboot.MyGreetingApp.services.MessageServices;
 
 
@@ -27,9 +28,9 @@ public class GreetingController {
     }
 
     @PostMapping
-    public Message postGreeting()
+    public Message postGreeting(@RequestBody User user)
     {
-        return new Message("This is POST Method");
+        return new Message("Hello " + user.getFirstName()+" "+ user.getLastName());
     }
 
     @PutMapping
