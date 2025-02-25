@@ -10,6 +10,8 @@ import springboot.MyGreetingApp.DTO.User;
 import springboot.MyGreetingApp.repository.GreetingRepo;
 import springboot.MyGreetingApp.services.MessageServices;
 
+import java.util.List;
+
 
 @RestController
 @RequestMapping("/greet")
@@ -24,18 +26,25 @@ public class GreetingController {
     }
 
 
-//    @GetMapping
-//    public Message greeting()
-//    {
-//        return new Message(service1.getGreeting());
-//    }
+    @GetMapping
+    public Message greeting()
+    {
+        return new Message(service1.getGreeting());
+    }
 
-    @GetMapping("/{id}")
+    @GetMapping("id/{id}")
     public String display(@PathVariable int id) {
         Message message = service1.getGreetingByID(id);
 
         // Handle null case
         return (message != null) ? message.getContent() : "Greeting not found!";
+    }
+
+    @GetMapping("id/all")
+    public List<Message> displayAll() {
+        List<Message> message = service1.getGreetings();
+
+        return message;
     }
 
     @PostMapping
