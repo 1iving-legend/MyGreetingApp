@@ -59,10 +59,10 @@ public class GreetingController {
         service1.putGreeting(id,message);
     }
 
-    @DeleteMapping
-    public Message deleteGreeting()
+    @DeleteMapping("/{id}")
+    public void deleteGreeting(@PathVariable int id)
     {
-        return new Message("This is Delete Method");
+        service1.deleteMessage(id);
     }
 
 }

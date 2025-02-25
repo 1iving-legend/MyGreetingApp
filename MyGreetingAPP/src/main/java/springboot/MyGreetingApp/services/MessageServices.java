@@ -14,19 +14,17 @@ public class MessageServices {
     @Autowired
     GreetingRepo repo;
 
-    public String getGreeting()
-    {
+    public String getGreeting() {
         return repo.findAll().toString();
     }
 
-    public void postGreeting(String firstName, String lastName)
-    {
-        String value= "Hello "+ firstName+" "+lastName;
+    public void postGreeting(String firstName, String lastName) {
+        String value = "Hello " + firstName + " " + lastName;
         repo.save(new Message(value));
     }
 
     public Message getGreetingByID(int id) {
-       return repo.findById(id).orElse(null);
+        return repo.findById(id).orElse(null);
     }
 
     public List<Message> getGreetings() {
@@ -51,6 +49,15 @@ public class MessageServices {
         }
     }
 
+    public void deleteMessage(int id) {
+
+        repo.deleteById(id);
+        }
+    }
 
 
-}
+
+
+
+
+
