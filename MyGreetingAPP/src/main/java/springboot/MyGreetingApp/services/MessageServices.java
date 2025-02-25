@@ -5,7 +5,7 @@ import org.springframework.stereotype.Service;
 import springboot.MyGreetingApp.DTO.Message;
 import springboot.MyGreetingApp.repository.GreetingRepo;
 
-import java.util.Optional;
+import java.util.List;
 
 @Service
 public class MessageServices {
@@ -26,6 +26,10 @@ public class MessageServices {
 
     public Message getGreetingByID(int id) {
        return repo.findById(id).orElse(null);
+    }
+
+    public List<Message> getGreetings() {
+        return repo.findAll();
     }
 
 }
