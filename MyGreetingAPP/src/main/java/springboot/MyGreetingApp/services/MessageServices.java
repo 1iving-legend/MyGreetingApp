@@ -5,6 +5,8 @@ import org.springframework.stereotype.Service;
 import springboot.MyGreetingApp.DTO.Message;
 import springboot.MyGreetingApp.repository.GreetingRepo;
 
+import java.util.Optional;
+
 @Service
 public class MessageServices {
 
@@ -20,6 +22,10 @@ public class MessageServices {
     {
         String value= "Hello "+ firstName+" "+lastName;
         repo.save(new Message(value));
+    }
+
+    public Message getGreetingByID(int id) {
+       return repo.findById(id).orElse(null);
     }
 
 }

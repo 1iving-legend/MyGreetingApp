@@ -1,6 +1,7 @@
 package springboot.MyGreetingApp.controller;
 
 
+import org.hibernate.boot.model.internal.XMLContext;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.*;
@@ -23,10 +24,18 @@ public class GreetingController {
     }
 
 
-    @GetMapping
-    public Message greeting()
-    {
-        return new Message(service1.getGreeting());
+//    @GetMapping
+//    public Message greeting()
+//    {
+//        return new Message(service1.getGreeting());
+//    }
+
+    @GetMapping("/{id}")
+    public String display(@PathVariable int id) {
+        Message message = service1.getGreetingByID(id);
+
+        // Handle null case
+        return (message != null) ? message.getContent() : "Greeting not found!";
     }
 
     @PostMapping

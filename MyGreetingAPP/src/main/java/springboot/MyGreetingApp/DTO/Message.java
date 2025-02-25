@@ -2,6 +2,8 @@ package springboot.MyGreetingApp.DTO;
 
 import jakarta.persistence.*;
 
+import java.util.Optional;
+
 @Entity
 @Table(name = "greetings")
 public class Message {
@@ -11,10 +13,11 @@ public class Message {
     private int id;
     private String content;
 
-    Message(){}
-
     public int getId() {
         return id;
+    }
+
+    public Message() {
     }
 
     public Message(String content)
