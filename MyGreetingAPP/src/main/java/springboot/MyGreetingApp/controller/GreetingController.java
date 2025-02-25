@@ -53,10 +53,10 @@ public class GreetingController {
        service1.postGreeting(user.getFirstName(),user.getLastName());
     }
 
-    @PutMapping
-    public Message putGreeting()
+    @PutMapping("/{id}")
+    public void putGreeting(@PathVariable int id, @RequestBody Message message)
     {
-        return new Message("This is PUT Method");
+        service1.putGreeting(id,message);
     }
 
     @DeleteMapping
