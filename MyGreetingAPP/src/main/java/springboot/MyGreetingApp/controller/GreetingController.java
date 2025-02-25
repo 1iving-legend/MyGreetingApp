@@ -6,6 +6,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.*;
 import springboot.MyGreetingApp.DTO.Message;
 import springboot.MyGreetingApp.DTO.User;
+import springboot.MyGreetingApp.repository.GreetingRepo;
 import springboot.MyGreetingApp.services.MessageServices;
 
 
@@ -21,6 +22,7 @@ public class GreetingController {
         this.service1=service1;
     }
 
+
     @GetMapping
     public Message greeting()
     {
@@ -28,9 +30,9 @@ public class GreetingController {
     }
 
     @PostMapping
-    public Message postGreeting(@RequestBody User user)
+    public void postGreeting(@RequestBody User user)
     {
-        return new Message("Hello " + user.getFirstName()+" "+ user.getLastName());
+       service1.postGreeting(user.getFirstName(),user.getLastName());
     }
 
     @PutMapping
